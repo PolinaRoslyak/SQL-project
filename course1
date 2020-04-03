@@ -1,0 +1,39 @@
+#Yelp Dataset
+
+# 1. List the cities with the most reviews in descending order:
+SELECT city, sum(review_count)
+FROM business
+GROUP BY city
+ORDER BY sum(review_count) DESC
+
+# 2. Find the distribution of star ratings to the business in the following cities:
+SELECT stars,
+COUNT (distinct id)
+FROM business
+WHERE city = 'Avon'
+GROUP BY stars
+
+# 3. Find the top 3 users based on their total number of reviews:
+SELECT name, 
+review_count
+FROM user
+ORDER BY review_count desc
+LIMIT 3
+
+# 4. Are there more reviews with the word "love" or with the word "hate" in them?
+SELECT COUNT (distinct text)
+FROM review
+WHERE text like '%hate%'
+
+SELECT COUNT (distinct text)
+FROM review
+WHERE text like '%love%'
+FROM user
+
+# 5. Find the top 10 users with the most fans:
+SELECT name, 
+fans
+FROM user
+ORDER BY fans desc
+LIMIT 10
+
